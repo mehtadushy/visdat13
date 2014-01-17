@@ -1,0 +1,715 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BBCF3DBA-D593-4D1F-9229-61D76522D231}</ProjectGuid>
+    <RootNamespace>GeoX</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <ExecutablePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin;$(ExecutablePath)</ExecutablePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\include;$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\lib;$(LibraryPath)</LibraryPath>
+    <ExecutablePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin;$(ExecutablePath)</ExecutablePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\include;$(IncludePath)</IncludePath>
+    <LibraryPath Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\..\application;$(SolutionDir)\..\experiments;$(SolutionDir)\..\geoX;$(SolutionDir)\..\math;$(SolutionDir)\..\system\basics;$(SolutionDir)\..\system\gui;$(SolutionDir)\..\system\misc;$(SolutionDir)\..\system\properties;$(SolutionDir)\..\system\streaming;$(SolutionDir)\..\viewers\cameraControl;$(SolutionDir)\..\viewers\widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>qtCored4.lib;qtGuid4.lib;qtOpenGLd4.lib;winmm.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalOptions>/MP %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;$(SolutionDir)\..\application;$(SolutionDir)\..\experiments;$(SolutionDir)\..\geoX;$(SolutionDir)\..\math;$(SolutionDir)\..\system\basics;$(SolutionDir)\..\system\gui;$(SolutionDir)\..\system\misc;$(SolutionDir)\..\system\properties;$(SolutionDir)\..\system\streaming;$(SolutionDir)\..\viewers\cameraControl;$(SolutionDir)\..\viewers\widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>qtCore4.lib;qtGui4.lib;qtOpenGL4.lib;winmm.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\experiments\ExampleExperimentFields.cpp" />
+    <ClCompile Include="..\experiments\ExampleExperimentScatterPlot.cpp" />
+    <ClCompile Include="..\system\misc\AMLoader.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="winmain.cpp" />
+    <ClCompile Include="..\geoX\GeoXMainWindow.cpp" />
+    <ClCompile Include="..\math\BoundingBox.cpp" />
+    <ClCompile Include="..\math\DynamicLinearAlgebra.cpp" />
+    <ClCompile Include="..\math\DynamicLinearAlgebraTools.cpp" />
+    <ClCompile Include="..\math\Frustum.cpp" />
+    <ClCompile Include="..\math\HalfSpace.cpp" />
+    <ClCompile Include="..\math\IterativeSolvers.cpp" />
+    <ClCompile Include="..\math\LinearAlgebra.cpp" />
+    <ClCompile Include="..\math\MarchingCubes3D.cpp" />
+    <ClCompile Include="..\math\PolarCoordinates.cpp" />
+    <ClCompile Include="..\math\SparseLinearAlgebra.cpp" />
+    <ClCompile Include="..\math\ViewFrustum.cpp" />
+    <ClCompile Include="..\system\basics\ClassCreator.cpp" />
+    <ClCompile Include="..\system\basics\ClassEditor.cpp" />
+    <ClCompile Include="..\system\basics\ClassMethods.cpp" />
+    <ClCompile Include="..\system\basics\ClassProperty.cpp" />
+    <ClCompile Include="..\system\basics\CopyObjectProperties.cpp" />
+    <ClCompile Include="..\system\basics\ExceptionHandling.cpp" />
+    <ClCompile Include="..\system\basics\HashTables.cpp" />
+    <ClCompile Include="..\system\basics\MetaClass.cpp" />
+    <ClCompile Include="..\system\basics\Object.cpp" />
+    <ClCompile Include="..\system\basics\Persistent.cpp" />
+    <ClCompile Include="..\system\gui\ClassSelectionDialog.cpp" />
+    <ClCompile Include="..\system\gui\FileDialogs.cpp" />
+    <ClCompile Include="..\system\gui\GeneralKey.cpp" />
+    <ClCompile Include="..\system\gui\GeoXOutput.cpp" />
+    <ClCompile Include="..\system\gui\MemberBrowser.cpp" />
+    <ClCompile Include="..\system\gui\MethodBrowser.cpp" />
+    <ClCompile Include="..\system\gui\Modifiers.cpp" />
+    <ClCompile Include="..\system\gui\ObjectBrowserWidget.cpp" />
+    <ClCompile Include="..\system\gui\ObjectCreationDialog.cpp" />
+    <ClCompile Include="..\system\gui\ObjectViewsTable.cpp" />
+    <ClCompile Include="..\system\gui\PopupWindow.cpp" />
+    <ClCompile Include="..\system\gui\PropertyBrowser.cpp" />
+    <ClCompile Include="..\system\gui\VerticalScrollView.cpp" />
+    <ClCompile Include="..\system\misc\ClassInstanceSet.cpp" />
+    <ClCompile Include="..\system\misc\ImageLoader.cpp" />
+    <ClCompile Include="..\system\misc\qtHelpers.cpp" />
+    <ClCompile Include="..\system\misc\StringHelper.cpp" />
+    <ClCompile Include="..\system\misc\Timer.cpp" />
+    <ClCompile Include="..\system\misc\Tools.cpp" />
+    <ClCompile Include="..\system\properties\BooleanClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\BooleanElementEditor.cpp" />
+    <ClCompile Include="..\system\properties\BooleanPropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\ClassTypeClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\ClassTypeClassPropertyEditorWidget.cpp" />
+    <ClCompile Include="..\system\properties\ClassTypePropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\CompoundClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\ElementEditor.cpp" />
+    <ClCompile Include="..\system\properties\EmbeddedObjectClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\EmbeddedObjectClassPropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\EmbeddedObjectElementEditor.cpp" />
+    <ClCompile Include="..\system\properties\EnumerationElementEditor.cpp" />
+    <ClCompile Include="..\system\properties\EnumerationPropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\FileNameElementEditor.cpp" />
+    <ClCompile Include="..\system\properties\FileNamePropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\FixedArrayClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\FixedArrayElementEditor.cpp" />
+    <ClCompile Include="..\system\properties\FixedArrayPropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\NumericalClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\ObjectClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\ObjectElementEditor.cpp" />
+    <ClCompile Include="..\system\properties\ObjectListBase.cpp" />
+    <ClCompile Include="..\system\properties\ObjectListElementEditor.cpp" />
+    <ClCompile Include="..\system\properties\ObjectListProperty.cpp" />
+    <ClCompile Include="..\system\properties\ObjectListPropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\ObjectPropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\PropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\SeparatorClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\SeparatorPropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\SingleClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\StringClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\StringElementEditor.cpp" />
+    <ClCompile Include="..\system\properties\StringPropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\StructClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\VariableArrayClassProperty.cpp" />
+    <ClCompile Include="..\system\properties\VariableArrayClassPropertyEditor.cpp" />
+    <ClCompile Include="..\system\properties\VariableArrayElementEditor.cpp" />
+    <ClCompile Include="..\system\streaming\BinaryObjectStreams.cpp" />
+    <ClCompile Include="..\system\streaming\LegacyClassNameTranslation.cpp" />
+    <ClCompile Include="..\system\streaming\ObjectStreams.cpp" />
+    <ClCompile Include="..\system\streaming\StreamClassTable.cpp" />
+    <ClCompile Include="..\viewers\cameraControl\Camera.cpp" />
+    <ClCompile Include="..\viewers\cameraControl\CameraController.cpp" />
+    <ClCompile Include="..\viewers\cameraControl\ExaminerCameraController.cpp" />
+    <ClCompile Include="..\viewers\cameraControl\WalkthroughCameraController.cpp" />
+    <ClCompile Include="..\viewers\widgets\GeoXGLWidget.cpp" />
+    <ClCompile Include="..\viewers\widgets\GeoXGLWidget3D.cpp" />
+    <ClCompile Include="..\viewers\widgets\GLGeometryViewer.cpp" />
+    <ClCompile Include="..\viewers\widgets\GLGeometryViewer3D.cpp" />
+    <ClCompile Include="..\viewers\widgets\LogoViewer.cpp" />
+    <ClCompile Include="..\experiments\ExampleExperiment.cpp" />
+    <ClCompile Include="..\experiments\ExampleExperiment2DGraphics.cpp" />
+    <ClCompile Include="..\experiments\ExampleExperiment3DGraphics.cpp" />
+    <ClCompile Include="..\experiments\ExampleExperimentMarchingCubes.cpp" />
+    <ClCompile Include="..\experiments\Experiment.cpp" />
+    <ClCompile Include="..\InitGeoX.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\experiments\ExampleExperimentFields.h" />
+    <ClInclude Include="..\experiments\ExampleExperimentScatterPlot.h" />
+    <ClInclude Include="..\math\Field2.hpp" />
+    <ClInclude Include="..\math\GridData.hpp" />
+    <ClInclude Include="..\system\misc\AMLoader.hpp" />
+    <ClInclude Include="stdafx.h" />
+    <CustomBuild Include="..\geoX\GeoXMainWindow.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\math\BoundingBox.h" />
+    <ClInclude Include="..\math\BoundingBox.hpp" />
+    <ClInclude Include="..\math\BoundingVolumeIntersection.h" />
+    <ClInclude Include="..\math\DynamicLinearAlgebra.h" />
+    <ClInclude Include="..\math\Dynamiclinearalgebra.hpp" />
+    <ClInclude Include="..\math\DynamicLinearAlgebraTools.h" />
+    <ClInclude Include="..\math\DynamicLinearAlgebraTools.hpp" />
+    <ClInclude Include="..\math\Frustum.h" />
+    <ClInclude Include="..\math\HalfSpace.h" />
+    <ClInclude Include="..\math\HalfSpace.hpp" />
+    <ClInclude Include="..\math\IterativeSolvers.h" />
+    <ClInclude Include="..\math\IterativeSolvers.hpp" />
+    <ClInclude Include="..\math\LinearAlgebra.h" />
+    <ClInclude Include="..\math\LinearAlgebra.hpp" />
+    <ClInclude Include="..\math\MarchingCubes3D.h" />
+    <ClInclude Include="..\math\PolarCoordinates.h" />
+    <ClInclude Include="..\math\Random.h" />
+    <ClInclude Include="..\math\SparseLinearAlgebra.h" />
+    <ClInclude Include="..\math\SparseLinearAlgebra.hpp" />
+    <ClInclude Include="..\math\Sphere.h" />
+    <ClInclude Include="..\math\ViewFrustum.h" />
+    <ClInclude Include="..\system\basics\ClassCreator.h" />
+    <ClInclude Include="..\system\basics\ClassEditor.h" />
+    <ClInclude Include="..\system\basics\ClassMethods.h" />
+    <ClInclude Include="..\system\basics\ClassProperty.h" />
+    <ClInclude Include="..\system\basics\CopyObjectProperties.h" />
+    <ClInclude Include="..\system\basics\exceptionhandling.h" />
+    <ClInclude Include="..\system\basics\exceptions.h" />
+    <ClInclude Include="..\system\basics\HashTables.h" />
+    <ClInclude Include="..\system\basics\HashTables.hpp" />
+    <ClInclude Include="..\system\basics\MetaClass.h" />
+    <ClInclude Include="..\system\basics\Object.h" />
+    <ClInclude Include="..\system\basics\PAssert.h" />
+    <ClInclude Include="..\system\basics\Persistent.h" />
+    <ClInclude Include="..\system\basics\PTypes.h" />
+    <CustomBuild Include="..\system\gui\ClassSelectionDialog.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\gui\Editor.h" />
+    <ClInclude Include="..\system\gui\FileDialogs.h" />
+    <ClInclude Include="..\system\gui\GeneralKey.h" />
+    <ClInclude Include="..\system\gui\GeoXOutput.h" />
+    <ClInclude Include="..\system\gui\KeyboardController.h" />
+    <CustomBuild Include="..\system\gui\MemberBrowser.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\MethodBrowser.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\gui\Modifiers.h" />
+    <ClInclude Include="..\system\gui\MouseButtons.h" />
+    <ClInclude Include="..\system\gui\MouseController.h" />
+    <CustomBuild Include="..\system\gui\ObjectBrowserWidget.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\ObjectCreationDialog.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\gui\ObjectViewsTable.h" />
+    <CustomBuild Include="..\system\gui\PopupWindow.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\PropertyBrowser.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\VerticalScrollView.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\misc\ClassInstanceSet.h" />
+    <ClInclude Include="..\system\misc\ImageLoader.h" />
+    <ClInclude Include="..\system\misc\qtHelpers.h" />
+    <ClInclude Include="..\system\misc\StringHelper.h" />
+    <ClInclude Include="..\system\misc\Timer.h" />
+    <ClInclude Include="..\system\misc\Tools.h" />
+    <ClInclude Include="..\system\misc\values_vs.h" />
+    <ClInclude Include="..\system\properties\BooleanClassProperty.h" />
+    <CustomBuild Include="..\system\properties\BooleanElementEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\properties\BooleanPropertyEditor.h" />
+    <ClInclude Include="..\system\properties\ClassTypeClassProperty.h" />
+    <CustomBuild Include="..\system\properties\ClassTypeClassPropertyEditorWidget.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\ClassTypePropertyEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\properties\CompoundClassProperty.h" />
+    <CustomBuild Include="..\system\properties\ElementEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\properties\EmbeddedObjectClassProperty.h" />
+    <CustomBuild Include="..\system\properties\EmbeddedObjectClassPropertyEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\EmbeddedObjectElementEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\EnumerationElementEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\properties\EnumerationPropertyEditor.h" />
+    <CustomBuild Include="..\system\properties\FileNameElementEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\FileNamePropertyEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\properties\FixedArrayClassProperty.h" />
+    <CustomBuild Include="..\system\properties\FixedArrayElementEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\FixedArrayPropertyEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\properties\NumericalClassProperty.h" />
+    <ClInclude Include="..\system\properties\numericalclassproperty.hpp" />
+    <ClInclude Include="..\system\properties\ObjectClassProperty.h" />
+    <CustomBuild Include="..\system\properties\ObjectElementEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\properties\ObjectListBase.h" />
+    <CustomBuild Include="..\system\properties\ObjectListElementEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\properties\ObjectListProperty.h" />
+    <CustomBuild Include="..\system\properties\ObjectListPropertyEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\properties\ObjectPropertyEditor.h" />
+    <ClInclude Include="..\system\properties\Properties.h" />
+    <ClInclude Include="..\system\properties\PropertyEditor.h" />
+    <ClInclude Include="..\system\properties\SeparatorClassProperty.h" />
+    <ClInclude Include="..\system\properties\SeparatorPropertyEditor.h" />
+    <ClInclude Include="..\system\properties\SingleClassProperty.h" />
+    <ClInclude Include="..\system\properties\StringClassProperty.h" />
+    <CustomBuild Include="..\system\properties\StringElementEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\properties\StringPropertyEditor.h" />
+    <ClInclude Include="..\system\properties\StructClassProperty.h" />
+    <ClInclude Include="..\system\properties\VariableArrayClassProperty.h" />
+    <ClInclude Include="..\system\properties\VariableArrayClassPropertyEditor.h" />
+    <CustomBuild Include="..\system\properties\VariableArrayElementEditor.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\system\streaming\BinaryObjectStreams.h" />
+    <ClInclude Include="..\system\streaming\LegacyClassNameTranslation.h" />
+    <ClInclude Include="..\system\streaming\ObjectStreams.h" />
+    <ClInclude Include="..\system\streaming\StreamClassTable.h" />
+    <ClInclude Include="..\viewers\cameraControl\Camera.h" />
+    <ClInclude Include="..\viewers\cameraControl\CameraController.h" />
+    <ClInclude Include="..\viewers\cameraControl\DependentObject.h" />
+    <ClInclude Include="..\viewers\cameraControl\ExaminerCameraController.h" />
+    <ClInclude Include="..\viewers\cameraControl\WalkthroughCameraController.h" />
+    <CustomBuild Include="..\viewers\widgets\GeoXGLWidget.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GeoXGLWidget3D.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GLGeometryViewer.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GLGeometryViewer3D.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\LogoViewer.h">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc: compiling %(Filename).h</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">moc "%(RootDir)%(Directory)%(Filename).h" -o "%(RootDir)%(Directory)moc/%(Filename)_moc.cpp"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_moc.cpp;%(Outputs)</Outputs>
+    </CustomBuild>
+    <ClInclude Include="..\experiments\ExampleExperiment.h" />
+    <ClInclude Include="..\experiments\ExampleExperiment2DGraphics.h" />
+    <ClInclude Include="..\experiments\ExampleExperiment3DGraphics.h" />
+    <ClInclude Include="..\experiments\ExampleExperimentMarchingCubes.h" />
+    <ClInclude Include="..\experiments\Experiment.h" />
+    <ClInclude Include="..\InitGeoX.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\geoX\GeoXMainWindowDesigner.ui">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\ObjectBrowserWidgetDesigner.ui">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\ObjectCreationDialogDesigner.ui">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GLGeometryViewer3DDesigner.ui">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+      <SubType>Designer</SubType>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GLGeometryViewerDesigner.ui">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\LogoViewerDesigner.ui">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic: compiling %(Filename).ui</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">uic  "%(RootDir)%(Directory)%(Filename).ui" -o "%(RootDir)%(Directory)ui_%(Filename).h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)ui_%(Filename).h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="..\images\ArrowDropDownSmall.png" />
+    <None Include="..\images\ArrowDropDownVerySmall.png" />
+    <None Include="..\images\ArrowUpSmall.png" />
+    <None Include="..\images\Directory.png" />
+    <None Include="..\images\DotDotDot.png" />
+    <None Include="..\images\down_arrow.bmp" />
+    <None Include="..\images\down_bottom_arrow.bmp" />
+    <CustomBuild Include="..\images\geoX.qrc">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">rcc: compiling %(Filename).qrc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">rcc "%(RootDir)%(Directory)%(Filename).qrc" -o "%(RootDir)%(Directory)moc/%(Filename)_rcc.h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(RootDir)%(Directory)moc/%(Filename)_rcc.h;%(Outputs)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">rcc: compiling %(Filename).qrc</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">rcc "%(RootDir)%(Directory)%(Filename).qrc" -o "%(RootDir)%(Directory)moc/%(Filename)_rcc.h"
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(RootDir)%(Directory)moc/%(Filename)_rcc.h;%(Outputs)</Outputs>
+    </CustomBuild>
+    <None Include="..\images\MainIcon.png" />
+    <None Include="..\images\Method.png" />
+    <None Include="..\images\new.png" />
+    <None Include="..\images\Object.png" />
+    <None Include="..\images\open.png" />
+    <None Include="..\images\saveHS.png" />
+    <None Include="..\images\saveHS_small.png" />
+    <None Include="..\images\small_class.bmp" />
+    <None Include="..\images\small_class_abstract.bmp" />
+    <None Include="..\images\up_arrow.bmp" />
+    <None Include="..\images\up_top_arrow.bmp" />
+    <None Include="..\images\x_smaller.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

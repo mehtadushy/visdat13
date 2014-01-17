@@ -1,0 +1,31 @@
+<RCC>
+  <qresource prefix="/images" >
+    <file>new.png</file>
+    <file>103px-Light_bulb_icon.svg.png</file>
+    <file>wirecube.png</file>
+    <file>100px-Nuvola_Green_Plus.svg.png</file>
+    <file>400px-Broom_icon.svg.png</file>
+    <file>ArrowDropDownSmall.png</file>
+    <file>ArrowDropDownVerySmall.png</file>
+    <file>ArrowUpSmall.png</file>
+    <file>Camera.png</file>
+    <file>Directory.png</file>
+    <file>DotDotDot.png</file>
+    <file>Method.png</file>
+    <file>Object.png</file>
+    <file>SelectPoint.png</file>
+    <file>down_arrow.bmp</file>
+    <file>down_bottom_arrow.bmp</file>
+    <file>exit.png</file>
+    <file>logo.png</file>
+    <file>open.png</file>
+    <file>saveHS.png</file>
+    <file>saveHS_small.png</file>
+    <file>small_class.bmp</file>
+    <file>small_class_abstract.bmp</file>
+    <file>up_arrow.bmp</file>
+    <file>up_top_arrow.bmp</file>
+    <file>x_smaller.png</file>
+    <file>MainIcon.png</file>
+  </qresource>
+</RCC>

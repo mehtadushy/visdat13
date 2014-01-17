@@ -1,0 +1,811 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="windows">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="geoX">
+      <UniqueIdentifier>{653b0a62-2638-44d1-af21-892b62e76a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{c8ac7019-2c9b-4e5f-bcb0-a3d647f95432}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system">
+      <UniqueIdentifier>{a2722476-122e-4505-a404-8dd7683bff17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\basics">
+      <UniqueIdentifier>{7705588f-d1d2-4246-b547-e6f67625fd4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\gui">
+      <UniqueIdentifier>{4d61ffc4-6405-4ef0-af1b-c6c850ed91c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\misc">
+      <UniqueIdentifier>{084e7b83-869a-4593-84f2-8d88568ce36d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\properties">
+      <UniqueIdentifier>{65435aee-e71c-499a-8a15-837b392e12c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="system\streaming">
+      <UniqueIdentifier>{739cb268-610f-4720-b603-821a388379bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="viewers">
+      <UniqueIdentifier>{25e5c338-25c7-4194-b3ea-3d7a8206ed3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="viewers\cameraControl">
+      <UniqueIdentifier>{df4704ba-34a3-4e75-912d-eab99d6f9b7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="viewers\widgets">
+      <UniqueIdentifier>{15cb43bd-6219-41ee-bc90-dc96226469af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="experiments">
+      <UniqueIdentifier>{8a43ac60-167d-43c0-ab3d-c9d4511262a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="images">
+      <UniqueIdentifier>{2c2b7733-aed8-4503-ad3d-804fe0ebc608}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>windows</Filter>
+    </ClCompile>
+    <ClCompile Include="winmain.cpp">
+      <Filter>windows</Filter>
+    </ClCompile>
+    <ClCompile Include="..\geoX\GeoXMainWindow.cpp">
+      <Filter>geoX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\BoundingBox.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\DynamicLinearAlgebra.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\DynamicLinearAlgebraTools.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\Frustum.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\HalfSpace.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\IterativeSolvers.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\LinearAlgebra.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\MarchingCubes3D.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\PolarCoordinates.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\SparseLinearAlgebra.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\math\ViewFrustum.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\basics\ClassCreator.cpp">
+      <Filter>system\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\basics\ClassEditor.cpp">
+      <Filter>system\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\basics\ClassMethods.cpp">
+      <Filter>system\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\basics\ClassProperty.cpp">
+      <Filter>system\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\basics\CopyObjectProperties.cpp">
+      <Filter>system\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\basics\ExceptionHandling.cpp">
+      <Filter>system\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\basics\HashTables.cpp">
+      <Filter>system\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\basics\MetaClass.cpp">
+      <Filter>system\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\basics\Object.cpp">
+      <Filter>system\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\basics\Persistent.cpp">
+      <Filter>system\basics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\ClassSelectionDialog.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\FileDialogs.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\GeneralKey.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\GeoXOutput.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\MemberBrowser.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\MethodBrowser.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\Modifiers.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\ObjectBrowserWidget.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\ObjectCreationDialog.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\ObjectViewsTable.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\PopupWindow.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\PropertyBrowser.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\gui\VerticalScrollView.cpp">
+      <Filter>system\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\misc\ClassInstanceSet.cpp">
+      <Filter>system\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\misc\ImageLoader.cpp">
+      <Filter>system\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\misc\qtHelpers.cpp">
+      <Filter>system\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\misc\StringHelper.cpp">
+      <Filter>system\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\misc\Timer.cpp">
+      <Filter>system\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\misc\Tools.cpp">
+      <Filter>system\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\BooleanClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\BooleanElementEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\BooleanPropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ClassTypeClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ClassTypeClassPropertyEditorWidget.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ClassTypePropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\CompoundClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ElementEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\EmbeddedObjectClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\EmbeddedObjectClassPropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\EmbeddedObjectElementEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\EnumerationElementEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\EnumerationPropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\FileNameElementEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\FileNamePropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\FixedArrayClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\FixedArrayElementEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\FixedArrayPropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\NumericalClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ObjectClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ObjectElementEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ObjectListBase.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ObjectListElementEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ObjectListProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ObjectListPropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\ObjectPropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\PropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\SeparatorClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\SeparatorPropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\SingleClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\StringClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\StringElementEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\StringPropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\StructClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\VariableArrayClassProperty.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\VariableArrayClassPropertyEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\properties\VariableArrayElementEditor.cpp">
+      <Filter>system\properties</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\streaming\BinaryObjectStreams.cpp">
+      <Filter>system\streaming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\streaming\LegacyClassNameTranslation.cpp">
+      <Filter>system\streaming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\streaming\ObjectStreams.cpp">
+      <Filter>system\streaming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\system\streaming\StreamClassTable.cpp">
+      <Filter>system\streaming</Filter>
+    </ClCompile>
+    <ClCompile Include="..\viewers\cameraControl\Camera.cpp">
+      <Filter>viewers\cameraControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\viewers\cameraControl\CameraController.cpp">
+      <Filter>viewers\cameraControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\viewers\cameraControl\ExaminerCameraController.cpp">
+      <Filter>viewers\cameraControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\viewers\cameraControl\WalkthroughCameraController.cpp">
+      <Filter>viewers\cameraControl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\viewers\widgets\GeoXGLWidget.cpp">
+      <Filter>viewers\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\viewers\widgets\GeoXGLWidget3D.cpp">
+      <Filter>viewers\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\viewers\widgets\GLGeometryViewer.cpp">
+      <Filter>viewers\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\viewers\widgets\GLGeometryViewer3D.cpp">
+      <Filter>viewers\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\viewers\widgets\LogoViewer.cpp">
+      <Filter>viewers\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\experiments\ExampleExperiment.cpp">
+      <Filter>experiments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\experiments\ExampleExperiment2DGraphics.cpp">
+      <Filter>experiments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\experiments\ExampleExperiment3DGraphics.cpp">
+      <Filter>experiments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\experiments\ExampleExperimentMarchingCubes.cpp">
+      <Filter>experiments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\experiments\Experiment.cpp">
+      <Filter>experiments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\experiments\ExampleExperimentScatterPlot.cpp">
+      <Filter>experiments</Filter>
+    </ClCompile>
+    <ClCompile Include="..\InitGeoX.cpp" />
+    <ClCompile Include="..\system\misc\AMLoader.cpp">
+      <Filter>system\misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\experiments\ExampleExperimentFields.cpp">
+      <Filter>experiments</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>windows</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\BoundingBox.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\BoundingBox.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\BoundingVolumeIntersection.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\DynamicLinearAlgebra.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\Dynamiclinearalgebra.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\DynamicLinearAlgebraTools.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\DynamicLinearAlgebraTools.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\Frustum.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\HalfSpace.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\HalfSpace.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\IterativeSolvers.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\IterativeSolvers.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\LinearAlgebra.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\LinearAlgebra.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\MarchingCubes3D.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\PolarCoordinates.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\Random.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\SparseLinearAlgebra.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\SparseLinearAlgebra.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\Sphere.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\ViewFrustum.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\ClassCreator.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\ClassEditor.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\ClassMethods.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\ClassProperty.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\CopyObjectProperties.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\exceptionhandling.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\exceptions.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\HashTables.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\HashTables.hpp">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\MetaClass.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\Object.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\PAssert.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\Persistent.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\basics\PTypes.h">
+      <Filter>system\basics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\gui\Editor.h">
+      <Filter>system\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\gui\FileDialogs.h">
+      <Filter>system\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\gui\GeneralKey.h">
+      <Filter>system\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\gui\GeoXOutput.h">
+      <Filter>system\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\gui\KeyboardController.h">
+      <Filter>system\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\gui\Modifiers.h">
+      <Filter>system\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\gui\MouseButtons.h">
+      <Filter>system\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\gui\MouseController.h">
+      <Filter>system\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\gui\ObjectViewsTable.h">
+      <Filter>system\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\misc\ClassInstanceSet.h">
+      <Filter>system\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\misc\ImageLoader.h">
+      <Filter>system\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\misc\qtHelpers.h">
+      <Filter>system\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\misc\StringHelper.h">
+      <Filter>system\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\misc\Timer.h">
+      <Filter>system\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\misc\Tools.h">
+      <Filter>system\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\misc\values_vs.h">
+      <Filter>system\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\BooleanClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\BooleanPropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\ClassTypeClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\CompoundClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\EmbeddedObjectClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\EnumerationPropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\FixedArrayClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\NumericalClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\numericalclassproperty.hpp">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\ObjectClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\ObjectListBase.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\ObjectListProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\ObjectPropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\Properties.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\PropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\SeparatorClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\SeparatorPropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\SingleClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\StringClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\StringPropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\StructClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\VariableArrayClassProperty.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\properties\VariableArrayClassPropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\streaming\BinaryObjectStreams.h">
+      <Filter>system\streaming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\streaming\LegacyClassNameTranslation.h">
+      <Filter>system\streaming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\streaming\ObjectStreams.h">
+      <Filter>system\streaming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\streaming\StreamClassTable.h">
+      <Filter>system\streaming</Filter>
+    </ClInclude>
+    <ClInclude Include="..\viewers\cameraControl\Camera.h">
+      <Filter>viewers\cameraControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\viewers\cameraControl\CameraController.h">
+      <Filter>viewers\cameraControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\viewers\cameraControl\DependentObject.h">
+      <Filter>viewers\cameraControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\viewers\cameraControl\ExaminerCameraController.h">
+      <Filter>viewers\cameraControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\viewers\cameraControl\WalkthroughCameraController.h">
+      <Filter>viewers\cameraControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\experiments\ExampleExperiment.h">
+      <Filter>experiments</Filter>
+    </ClInclude>
+    <ClInclude Include="..\experiments\ExampleExperiment2DGraphics.h">
+      <Filter>experiments</Filter>
+    </ClInclude>
+    <ClInclude Include="..\experiments\ExampleExperiment3DGraphics.h">
+      <Filter>experiments</Filter>
+    </ClInclude>
+    <ClInclude Include="..\experiments\ExampleExperimentMarchingCubes.h">
+      <Filter>experiments</Filter>
+    </ClInclude>
+    <ClInclude Include="..\experiments\Experiment.h">
+      <Filter>experiments</Filter>
+    </ClInclude>
+    <ClInclude Include="..\InitGeoX.h" />
+    <ClInclude Include="..\experiments\ExampleExperimentScatterPlot.h">
+      <Filter>experiments</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\Field2.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\math\GridData.hpp">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\system\misc\AMLoader.hpp">
+      <Filter>system\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\experiments\ExampleExperimentFields.h">
+      <Filter>experiments</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\images\ArrowDropDownSmall.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\ArrowDropDownVerySmall.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\ArrowUpSmall.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\Directory.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\DotDotDot.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\down_arrow.bmp">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\down_bottom_arrow.bmp">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\Method.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\Object.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\open.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\saveHS.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\saveHS_small.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\small_class.bmp">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\small_class_abstract.bmp">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\up_arrow.bmp">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\up_top_arrow.bmp">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\x_smaller.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\MainIcon.png">
+      <Filter>images</Filter>
+    </None>
+    <None Include="..\images\new.png">
+      <Filter>images</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\geoX\GeoXMainWindow.h">
+      <Filter>geoX</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\geoX\GeoXMainWindowDesigner.ui">
+      <Filter>geoX</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\ClassSelectionDialog.h">
+      <Filter>system\gui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\MemberBrowser.h">
+      <Filter>system\gui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\MethodBrowser.h">
+      <Filter>system\gui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\ObjectBrowserWidget.h">
+      <Filter>system\gui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\ObjectBrowserWidgetDesigner.ui">
+      <Filter>system\gui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\ObjectCreationDialog.h">
+      <Filter>system\gui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\ObjectCreationDialogDesigner.ui">
+      <Filter>system\gui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\PopupWindow.h">
+      <Filter>system\gui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\PropertyBrowser.h">
+      <Filter>system\gui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\gui\VerticalScrollView.h">
+      <Filter>system\gui</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\BooleanElementEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\ClassTypeClassPropertyEditorWidget.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\ClassTypePropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\ElementEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\EmbeddedObjectClassPropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\EmbeddedObjectElementEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\EnumerationElementEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\FileNameElementEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\FileNamePropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\FixedArrayElementEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\FixedArrayPropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\ObjectElementEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\ObjectListElementEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\ObjectListPropertyEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\StringElementEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\system\properties\VariableArrayElementEditor.h">
+      <Filter>system\properties</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GeoXGLWidget.h">
+      <Filter>viewers\widgets</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GeoXGLWidget3D.h">
+      <Filter>viewers\widgets</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GLGeometryViewer.h">
+      <Filter>viewers\widgets</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GLGeometryViewer3D.h">
+      <Filter>viewers\widgets</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GLGeometryViewer3DDesigner.ui">
+      <Filter>viewers\widgets</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\GLGeometryViewerDesigner.ui">
+      <Filter>viewers\widgets</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\LogoViewer.h">
+      <Filter>viewers\widgets</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\viewers\widgets\LogoViewerDesigner.ui">
+      <Filter>viewers\widgets</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\images\geoX.qrc">
+      <Filter>images</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
