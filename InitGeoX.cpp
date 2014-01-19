@@ -40,6 +40,7 @@
 #include "Experiment5_2.h"
 #include "Experiment5_3.h"
 #include "Experiment7_1.h"
+#include "Experiment9_1.h"
 
 // ...
 
@@ -82,6 +83,7 @@ void init()
     Experiment5_2::init(Experiment::getClass());
     Experiment5_3::init(Experiment::getClass());
     Experiment7_1::init(Experiment::getClass());
+    Experiment9_1::init(Experiment::getClass());
     // ...
 }
 
@@ -120,5 +122,6 @@ void shutdown()
     Experiment5_2::shutdown();
     Experiment5_3::shutdown();
     Experiment7_1::shutdown();
+    Experiment9_1::shutdown();
     // ...
 }

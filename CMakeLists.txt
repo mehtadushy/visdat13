@@ -156,6 +156,7 @@ SET(Experiment_SOURCES
     assignments/Experiment5_2.cpp
     assignments/Experiment5_3.cpp
     assignments/Experiment7_1.cpp
+    assignments/Experiment9_1.cpp
 )
 
 SET(GeoX_SOURCES ${GeoX_SOURCES}
