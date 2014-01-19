@@ -128,7 +128,6 @@ void Experiment9_1::ShowCriticalPoints()
    if(critical_pt_avail ==false)
    {
      get_critical_points();
-     classify_critical_points();
    }
 
    //Now we come down to the display business of critical points
@@ -136,13 +135,15 @@ void Experiment9_1::ShowCriticalPoints()
    //Defining colors as red, orange, yellow, green, blue, violet
    vector <Vector4f> cp_color;
    float cp_alpha = 0.7;
-   cp_color.resize(6);
+   cp_color.resize(8);
    cp_color[0]=makeVector4f(1,0,0,cp_alpha);     //Red   
    cp_color[1]=makeVector4f(1,0.2,0,cp_alpha);   //Orange
    cp_color[2]=makeVector4f(1,1,0,cp_alpha);     //Yellow
    cp_color[3]=makeVector4f(0,1,0,cp_alpha);     //Green
    cp_color[4]=makeVector4f(0,0,1,cp_alpha);     //Blue
    cp_color[5]=makeVector4f(.5,.1,.9,cp_alpha);  //Violet
+   cp_color[6]=makeVector4f(1,1,1,cp_alpha);     //White
+   cp_color[7]=makeVector4f(.4,1,.5,cp_alpha);     //
 
    //Iterate through the vector containing critical points and plot them
    //for(std::vector<Vector3f>::iterator it = CriticalPoints.begin();
@@ -154,13 +155,17 @@ void Experiment9_1::ShowCriticalPoints()
    //           CrPt.color=cp_color[<int>((*it)[2])];               //Get color from the critical point classification
    //           viewer->addPoint(CrPt); 
    //}
+        
+   output << "Preparing to display critical points ...\n";
+   output << CriticalPoints.size() <<"\n";
+
    for(int i=0; i<CriticalPoints.size(); i++)
    {
 	   if((static_cast<int>(CriticalPoints[i][2])) != 10)
 	   {
               Point2D CrPt;
               CrPt.position=makeVector2f(CriticalPoints[i][0],CriticalPoints[i][1]);    //Read X and Y coordinate out
-              CrPt.size=10.0;
+              CrPt.size=8.0;
               CrPt.color=cp_color[static_cast<int>(CriticalPoints[i][2])];               //Get color from the critical point classification
               viewer->addPoint(CrPt); 
 	   }
@@ -174,6 +179,7 @@ void Experiment9_1::get_critical_points()
    // a cell, find it using bisection/domain decomposition
 
    //Cells are being addressed by the top left corner
+   output<<"Computing Critical Points ...\n";
 
    for(int i=0; i<field.dims()[0]-1; i++)
    {
@@ -201,15 +207,20 @@ void Experiment9_1::get_critical_points()
 	     xdiff=bound_box[1][0]-bound_box[0][0];
 	     ydiff=bound_box[1][1]-bound_box[0][1];
 
-	     float thresh=1e-6;
+	     float32 thresh=1e-7;  //Threshold to terminate the search for critical point
 
 	     if( (fabs(xdiff)<thresh) && (fabs(ydiff)<thresh))
 	     {
-	       CriticalPoints.push_back(makeVector3f(bound_box[0][0],bound_box[0][1],0));	     
+               int CrPt_Class;
+	       CrPt_Class=classify_critical_points(bound_box[0]);
+	       if(CrPt_Class != 10)
+	       {
+	          CriticalPoints.push_back(makeVector3f(bound_box[0][0],bound_box[0][1],CrPt_Class));
+	       }	     
 	     }
 	     else
 	     {
-	        vector <Vector2f>  temp_bound_box(2, makeVector2f(0,0));
+	        vector <Vector2f>  temp_bound_box(2, makeVector2f(0,0)); //Contains the 4 subregions of the domain
 
 		temp_bound_box[0]=bound_box[0];
 		temp_bound_box[1]=makeVector2f(bound_box[0][0]+ xdiff/2.0, bound_box[0][1]+ ydiff/2.0);
@@ -239,10 +250,11 @@ void Experiment9_1::get_critical_points()
 
 	   }
 
-	   critical_pt_avail = true; //Mark that critical points are available
 
       }
    }
+	   critical_pt_avail = true; //Mark that critical points are available
+	   output<<"Done computing critical points\n";
 
 }
 
@@ -274,16 +286,11 @@ bool Experiment9_1::sign_test(vector <Vector2f> bound_box)   //Pass the bounding
   
 }
 
-void Experiment9_1::classify_critical_points()
+int Experiment9_1::classify_critical_points(const Vector2f & CrPt)
 {
    
    //enum cp_type {source, repel_focus, saddle, center, sink, attract_focus}; 
     
-   //Cycle through the list of critical points and check the jacobian eigenvalues for the points
-   for(int i=0; i<CriticalPoints.size(); i++)
-   {
-              Vector2f CrPt;
-              CrPt=makeVector2f(CriticalPoints[i][0],CriticalPoints[i][1]);    //Read X and Y coordinate out
               
 	      //Get Jacobian and Eigenvalues
 	      Vector2f RealEigen;
@@ -293,33 +300,30 @@ void Experiment9_1::classify_critical_points()
 	      Matrix2f field_jacobian;
 	      field_jacobian = field.sampleJacobian(CrPt);
 
-	      if(fabs(field_jacobian.getDeterminant()) < 10e-8)  // If the determinant of the jacobian is rather small
+	      if(fabs(field_jacobian.getDeterminant()) < 1e-7)  // If the determinant of the jacobian is rather small
 	      {
-                CriticalPoints[i][2]=10;
+                return 10;
 	      }
 	      else
 	      {
-	        field_jacobian.solveEigenProblem(RealEigen,ImEigen,EigenValues);
+	      field_jacobian.solveEigenProblem(RealEigen,ImEigen,EigenValues);
 
-	        //Classify the point
-		if( (RealEigen[0]>0) && (RealEigen[1]>0) && (fabs(ImEigen[0]) < 10e-8) && (fabs(ImEigen[1]) < 10e-8) ) //Source
-                 CriticalPoints[i][2]=0;
-		else if( (RealEigen[0]<0) && (RealEigen[1]<0) && (fabs(ImEigen[0]) < 10e-8) && (fabs(ImEigen[1]) < 10e-8) ) //Sink
-                 CriticalPoints[i][2]=4;
-		else if( ((RealEigen[0]*RealEigen[1])<0) && (fabs(ImEigen[0]) < 10e-8) && (fabs(ImEigen[1]) < 10e-8) ) //Saddle
-                 CriticalPoints[i][2]=2;
-		else if( (fabs(RealEigen[0]-RealEigen[1])<10e-8) && (RealEigen[0]>0) && (fabs(ImEigen[0]) > 10e-8) && (fabs(ImEigen[1]+ImEigen[1]) < 10e-8) ) //Repelling focus
-                 CriticalPoints[i][2]=1;
-		else if( (fabs(RealEigen[0]-RealEigen[1])<10e-8) && (RealEigen[0]< 0) && (fabs(ImEigen[0]) > 10e-8) && (fabs(ImEigen[1]+ImEigen[1]) < 10e-8) ) //Attracting focus
-                 CriticalPoints[i][2]=5;
-		else if( (fabs(RealEigen[0]) < 10e-8) && (fabs(RealEigen[1]) < 10e-8) && (fabs(ImEigen[0]) > 10e-8) && (fabs(ImEigen[1]+ImEigen[1]) < 10e-8) ) //Center
-                 CriticalPoints[i][2]=3;
-		else
-                  CriticalPoints[i][2]=10;
+	      //Classify the point
+	      if( (RealEigen[0]>0) && (RealEigen[1]>0) && (fabs(ImEigen[0]) < 10e-8) && (fabs(ImEigen[1]) < 10e-8) ) //Source
+               return 0;
+	      else if( (RealEigen[0]<0) && (RealEigen[1]<0) && (fabs(ImEigen[0]) < 10e-8) && (fabs(ImEigen[1]) < 10e-8) ) //Sink
+               return 4;
+	      else if( ((RealEigen[0]*RealEigen[1])<0) && (fabs(ImEigen[0]) < 10e-8) && (fabs(ImEigen[1]) < 10e-8) ) //Saddle
+               return 2;
+	      else if( (fabs(RealEigen[0]-RealEigen[1])<10e-8) && (RealEigen[0]>0) && (fabs(ImEigen[0]) > 10e-8) && (fabs(ImEigen[0]+ImEigen[1]) < 10e-8) ) //Repelling focus
+               return 1;
+	      else if( (fabs(RealEigen[0]-RealEigen[1])<10e-8) && (RealEigen[0]< 0) && (fabs(ImEigen[0]) > 10e-8) && (fabs(ImEigen[0]+ImEigen[1]) < 10e-8) ) //Attracting focus
+               return 5;
+	      else if( (fabs(RealEigen[0]) < 10e-8) && (fabs(RealEigen[1]) < 10e-8) && (fabs(ImEigen[0]) > 10e-8) && (fabs(ImEigen[0]+ImEigen[1]) < 10e-8) ) //Center
+               return 3;
+	      else
+                return 6;
 	      }
-
-   }  
-
 }
 
 void Experiment9_1::GenerateRandomTexture()

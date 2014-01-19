@@ -35,7 +35,7 @@ private:
     Vector2f func_v(Vector2f);         //Return the value of the vector field at the point.
     virtual QWidget* createViewer();
 
-    void classify_critical_points();    //Checks the determinant condition (det(J)!=0) for critical points and finds their properties. 
+    int classify_critical_points(const Vector2f &);    //Checks the determinant condition (det(J)!=0) for critical points and finds their properties. 
                                         //Vector field comes from "field" and the information regarding critical points and their properties 
                                         //goes into "CriticalPoints"
     void get_critical_points();         //Looks for points where the vector field goes to 0 and pushes them onto "CriticalPoints".
