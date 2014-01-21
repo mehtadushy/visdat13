@@ -234,23 +234,23 @@ public:
 
     {
       //dx derivative
-      pHi[0] = x_[0] + mInvScaleFactor[0]; pHi[1] = x_[1];
-      pLo[0] = x_[0] - mInvScaleFactor[0]; pLo[1] = x_[1];
+      pHi[0] = x_[0] + mHalfScaleFactor[0]; pHi[1] = x_[1];
+      pLo[0] = x_[0] - mHalfScaleFactor[0]; pLo[1] = x_[1];
 
       vHi = sampleScalar(pHi),
-        vLo = sampleScalar(pLo);
+      vLo = sampleScalar(pLo);
 
       if(!insideBounds(pHi)) {
         //backward difference
         dx = sampleScalar(x_);
-        dx = (dx - vLo)  / mInvScaleFactor[0];
+        dx = (dx - vLo)  / mHalfScaleFactor[0];
       } else if(!insideBounds(pLo)) {
         //forward difference
         dx = sampleScalar(x_);
-        dx = (vHi - dx)  / mInvScaleFactor[0];
+        dx = (vHi - dx)  / mHalfScaleFactor[0];
       } else {
         //central difference
-        dx = (vHi - vLo) / (2*mInvScaleFactor[0]);
+        dx = (vHi - vLo) / (2*mHalfScaleFactor[0]);
       }
     }
 
@@ -260,7 +260,7 @@ public:
       pLo[0] = x_[0]; pLo[1] = x_[1] - mHalfScaleFactor[1];
 
       vHi = sampleScalar(pHi),
-        vLo = sampleScalar(pLo);
+      vLo = sampleScalar(pLo);
 
       if(!insideBounds(pHi)) {
         //backward difference
