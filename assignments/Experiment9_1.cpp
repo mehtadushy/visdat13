@@ -40,6 +40,10 @@ IMPLEMENT_GEOX_CLASS( Experiment9_1, 0)
    ADD_SEPARATOR("---")
    ADD_SEPARATOR("Display Properties")
    ADD_BOOLEAN_PROP(persist_on,0)
+   ADD_SEPARATOR("RK4 Properties")
+   ADD_INT32_PROP(max_steps,0)  
+   ADD_FLOAT32_PROP(field_val_tolerance,0)  
+
 
    
    ADD_NOARGS_METHOD(Experiment9_1::LoadVectorField)        //Load vector field and reset "critical_pt_avail" flag
@@ -47,12 +51,13 @@ IMPLEMENT_GEOX_CLASS( Experiment9_1, 0)
    ADD_NOARGS_METHOD(Experiment9_1::ShowCriticalPoints)     //If critical points have not been computed, compute them, set the
                                                             //"critical_pt_avail" flag and display the points. Otherwise just
                                                             //display the points.
-   //ADD_NOARGS_METHOD(Experiment9_1::ShowSeparatrices)       //If critical points have not been computed, compute them, set 
+   ADD_NOARGS_METHOD(Experiment9_1::ShowSeparatrices)       //If critical points have not been computed, compute them, set 
                                                             //the"critical_pt_avail" flag and compute & display the separatrices.
                                                             //Otherwise just compute and show the separatrices 
    ADD_NOARGS_METHOD(Experiment9_1::GenerateRandomTexture)  //Generate a random texture for LIC
    ADD_NOARGS_METHOD(Experiment9_1::ShowFlowLIC)            //Display the result of LIC
-   //ADD_NOARGS_METHOD(Experiment9_1::DrawStreamRandom)       //Draw streamlines seeded by a random distribution of points
+   ADD_NOARGS_METHOD(Experiment9_1::DrawStreamModulated)       //Draw streamlines seeded by a random distribution of points
+   ADD_NOARGS_METHOD(Experiment9_1::OverlayGrid)
 	
 }
 QWidget* Experiment9_1::createViewer()  
@@ -64,8 +69,18 @@ QWidget* Experiment9_1::createViewer()
 Experiment9_1::Experiment9_1()           //Constructor
 {
     viewer = NULL; 
+
+    //RK4 Stuff
     max_steps=1000;
     field_val_tolerance = 0.00005;
+      //rk4 internal - get changed internally
+    arc_length=2;
+    step_size=0.01;
+
+    //Internal flags
+    critical_pt_avail=false;
+    draw_stream=false;  
+
 
     //LIC Related Stuff
     bw_thresh=0.3;
@@ -75,6 +90,14 @@ Experiment9_1::Experiment9_1()           //Constructor
     texture_variance=0.9;
     texture_size=8;
     kernel_size=15;
+
+    //Streamline related stuff
+    show_seeds=false;
+    num_seeds=100;
+    stream_alpha=0.7;
+       //stream stuff for internal use - get modified internally
+    stream_color=makeVector4f(1,1,1,stream_alpha);
+    stream_width=3;
 
 }
 
@@ -111,7 +134,9 @@ void Experiment9_1::LoadScalarField()
     {
        for(int j=0; j<scalar_field.dims()[1]; j++)
        {
-           field.setNode(i,j,scalar_field.sampleGradient(scalar_field.nodePosition(i,j)));
+           //There is a bug in the sampleGradient function. Use your own derivative function 
+	   //or wait till the sampleGradient function is fixed
+	   field.setNode(i,j,scalar_field.sampleGradient(scalar_field.nodePosition(i,j)));
        }
     }
     critical_pt_avail = false;
@@ -207,7 +232,7 @@ void Experiment9_1::get_critical_points()
 	     xdiff=bound_box[1][0]-bound_box[0][0];
 	     ydiff=bound_box[1][1]-bound_box[0][1];
 
-	     float32 thresh=1e-7;  //Threshold to terminate the search for critical point
+	     float32 thresh=1e-6;  //Threshold to terminate the search for critical point
 
 	     if( (fabs(xdiff)<thresh) && (fabs(ydiff)<thresh))
 	     {
@@ -362,6 +387,7 @@ void Experiment9_1::GenerateRandomTexture()
 
 void Experiment9_1::ShowFlowLIC()
 {
+     draw_stream=false;
      viewer->clear();
     //Find the step size by figuring out the shorter dimension of each pixel
     float32 x_size=(field.boundMax()[0]-field.boundMin()[0])/texture_field.dims()[0];
@@ -423,6 +449,195 @@ void Experiment9_1::ShowFlowLIC()
 
 }
 
+void Experiment9_1::OverlayGrid()
+{
+   float32 grid_alpha=0.3;
+   Vector4f grid_color;
+   grid_color = makeVector4f(0.5,0.5,0.5,grid_alpha);
+  //Traverse one dimension first and then the other dimension
+   for(size_t j=0; j<field.dims()[1]; j++)
+    {
+        viewer->addLine(field.nodePosition(0,j), field.nodePosition(field.dims()[0]-1,j), grid_color, 1);
+    }
+   for(size_t i=0; i<field.dims()[0]; i++)
+    {
+        viewer->addLine(field.nodePosition(i,0), field.nodePosition(i,field.dims()[1]-1), grid_color, 1);
+    }
+
+    viewer->refresh();
+}
+
+void Experiment9_1::ShowSeparatrices()
+{
+   if(persist_on == false)
+   {
+     viewer->clear();
+   }
+
+   //Streamline color and width
+   stream_color=makeVector4f(1,1,1,stream_alpha);
+   stream_width=4;
+   //RK4 arclength and step size
+   step_size=((field.boundMax()[0]-field.boundMin()[0])/field.dims()[0])*((field.boundMax()[0]-field.boundMin()[0])/field.dims()[0]);
+		   
+   step_size+=((field.boundMax()[1]-field.boundMin()[1])/field.dims()[1])*((field.boundMax()[1]-field.boundMin()[1])/field.dims()[1]);
+		   
+   step_size= 0.05* sqrtf(step_size);
+
+   arc_length=((field.boundMax()[0]-field.boundMin()[0]))*((field.boundMax()[0]-field.boundMin()[0])) + ((field.boundMax()[1]-field.boundMin()[1]))*((field.boundMax()[1]-field.boundMin()[1]));
+   arc_length= 2 * sqrtf(arc_length); //Max arclength is 2 x the diagonal of the bounding box 
+
+   if(critical_pt_avail ==false)
+   {
+     get_critical_points();
+   }
+
+   //Go through Critical points and look for saddle points
+              
+   for(int i=0; i<CriticalPoints.size(); i++)
+   {
+	   if((static_cast<int>(CriticalPoints[i][2])) == 2)
+	   {
+              Vector2f CrPt;
+              CrPt=makeVector2f(CriticalPoints[i][0],CriticalPoints[i][1]);    //Read X and Y coordinate out
+	      //Get Jacobian and EigenVectors
+
+	      Vector2f RealEigen;
+	      Vector2f ImEigen;
+	      Matrix2f EigenVectors;
+
+	      Matrix2f field_jacobian;
+	      field_jacobian = field.sampleJacobian(CrPt);
+	      field_jacobian.solveEigenProblem(RealEigen,ImEigen,EigenVectors);
+
+	      
+	      //Check the eigen value corresponding to the eigen vectors to figure out if the eigen vector points
+	      //inward or outward and start backward/forward integration.
+	      //The field value may be too low close to the saddle point, causing rk4 to take many small steps,
+	      //potentially slowing down the generation of separatrices. Take seed points a bit further away from
+	      //the saddle point, in the direction of the eigenvectors. Let the distance be a function of the cell
+	      //diagonal
+
+	      
+	      for(int idx=0; idx<2; idx++)
+	      {
+		   //Computing the seed points
+		   float step_from_saddle=((field.boundMax()[0]-field.boundMin()[0])/field.dims()[0])*((field.boundMax()[0]-field.boundMin()[0])/field.dims()[0]);
+		   step_from_saddle+=((field.boundMax()[1]-field.boundMin()[1])/field.dims()[1])*((field.boundMax()[1]-field.boundMin()[1])/field.dims()[1]);
+		   step_from_saddle= 0.005* sqrtf(step_from_saddle);
+
+	           draw_stream_rk4(CrPt+makeVector2f(step_from_saddle*EigenVectors[idx][0],step_from_saddle*EigenVectors[idx][1]),(RealEigen[idx] > 0)); 
+	           draw_stream_rk4(CrPt-makeVector2f(step_from_saddle*EigenVectors[idx][0],step_from_saddle*EigenVectors[idx][1]),(RealEigen[idx] > 0));
+	      }
+		      
+	   }
+   }  
+
+
+}
+
+void Experiment9_1::DrawStreamModulated()
+{
+    
+   if(persist_on == false)
+   {
+     viewer->clear();
+   }
+
+   //Streamline color and width
+   stream_color=makeVector4f(1,1,.1,stream_alpha);
+   stream_width=1;
+   //RK4 arclength and step size
+   step_size=((field.boundMax()[0]-field.boundMin()[0])/field.dims()[0])*((field.boundMax()[0]-field.boundMin()[0])/field.dims()[0]);
+		   
+   step_size+=((field.boundMax()[1]-field.boundMin()[1])/field.dims()[1])*((field.boundMax()[1]-field.boundMin()[1])/field.dims()[1]);
+		   
+   step_size= 0.1* sqrtf(step_size);
+
+   arc_length=((field.boundMax()[0]-field.boundMin()[0]))*((field.boundMax()[0]-field.boundMin()[0])) + ((field.boundMax()[1]-field.boundMin()[1]))*((field.boundMax()[1]-field.boundMin()[1]));
+   arc_length= sqrtf(arc_length); //Max arclength is 1 x the diagonal of the bounding box
+
+   //Divide x and y into 10x10 grid
+   //Distribute the number of seeds among the squares by the average value of each square
+
+   float32 avg_val[10][10]; 
+   float32 sum_avg=0;
+   float32 x_step = (field.boundMax()[0]-field.boundMin()[0])/10;
+   float32 y_step = (field.boundMax()[1]-field.boundMin()[1])/10;
+   int i=0,j=0;
+   for(float32 x=field.boundMin()[0]; x<field.boundMax()[0]-x_step/2; x+=x_step)
+   {
+     j=0;	   
+     for(float32 y=field.boundMin()[1]; y<field.boundMax()[1]-y_step/2; y+=y_step)
+     {
+          Vector2f vec = field.sample(makeVector2f(x,y));
+	  avg_val[i][j]= sqrtf( vec.getSqrNorm());
+	  vec=field.sample(makeVector2f(x+x_step,y));
+	  avg_val[i][j] += sqrtf( vec.getSqrNorm());
+	  vec=field.sample(makeVector2f(x,y+y_step));
+	  avg_val[i][j] += sqrtf( vec.getSqrNorm());
+	  vec=field.sample(makeVector2f(x+x_step,y+y_step));
+	  avg_val[i][j] += sqrtf( vec.getSqrNorm());
+
+	  avg_val[i][j]=avg_val[i][j]/4;
+	  sum_avg+=avg_val[i][j];
+
+	  output << i << " " << j << " "<<avg_val[i][j]<<"\n";
+	  j++;
+     }
+     i++;
+
+   }
+
+   i=0;
+   j=0;
+   int total_seeds=0;
+   for(float32 x=field.boundMin()[0]; x<field.boundMax()[0]-x_step/2; x+=x_step)
+   {
+    j=0;	   
+    for(float32 y=field.boundMin()[1]; y<field.boundMax()[1]-y_step/2; y+=y_step)
+    {
+	 int nseeds= ((avg_val[i][j]/sum_avg)*(float)num_seeds) + rand()%2;
+	 total_seeds+=nseeds;
+
+         //Draw streamlines in both forward and backward directions for num_seeds random points
+
+         for(int k=0; k< nseeds; k++)
+         {
+           Vector2f X_Seed;
+           X_Seed[0]= ((rand() * x_step)/ RAND_MAX) + x;
+           X_Seed[1]= ((rand() * y_step) / RAND_MAX) + y;
+           if(show_seeds==true)
+           {
+              Point2D SeedPt;
+              SeedPt.position=X_Seed;
+              SeedPt.color=makeVector4f(1,1,0,1);
+              viewer->addPoint(SeedPt);     
+           }
+           draw_stream_rk4(X_Seed,true); //Forward
+           draw_stream_rk4(X_Seed,false); //Backward
+           
+         }
+	 j++;
+    }
+    i++;
+   }
+    output<< "Total Seeds "<<total_seeds;
+
+}
+
+
+void Experiment9_1::draw_stream_rk4(Vector2f X_Seed, bool direction)
+{
+	  draw_stream=true;
+	  bool result;
+          if(direction == true)  //Forward
+             result=rk4_forward(X_Seed);
+          else                  //Backward
+             result=rk4_back(X_Seed);
+
+          viewer->refresh();
+  }
 
 
 bool Experiment9_1::rk4_forward(Vector2f &x1)
@@ -485,10 +700,14 @@ bool Experiment9_1::rk4_forward(Vector2f &x1)
 	  }
 
              
+	  if(draw_stream)
+	  {
+            viewer->addLine(x1,x1+inc,stream_color,stream_width);
+	  }
           x1 += inc;
 	  current_arc_length+=sqrtf(inc.getSqrNorm());
 	  if(arc_len_crossed)
-	return true;
+	   return true;
     }
     
     return true;
@@ -549,7 +768,12 @@ bool Experiment9_1::rk4_back(Vector2f &x1)
 	      }
 	  }
 
-             
+             	  
+	  if(draw_stream)
+	  {
+            viewer->addLine(x1,x1-inc,stream_color,stream_width);
+	  }
+
           x1 -= inc;
 	  current_arc_length+=sqrtf(inc.getSqrNorm());
 	  if(arc_len_crossed)

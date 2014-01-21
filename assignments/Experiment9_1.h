@@ -22,13 +22,15 @@ public:
     void LoadVectorField();           //Load vector field and reset "critical_pt_avail" flag
     void LoadScalarField();           //Load scalar field, compute its gradient and reset "critical_pt_avail" flag
     void ShowCriticalPoints();       
-    //void ShowSeparatrices();
+    void ShowSeparatrices();
     void GenerateRandomTexture();     //Generate a random texture using a seed number as input, as well
                                       // as the mean and SD of the distribution, along with the ability to select
                                       // between black and white and the dimensions of the the texture. The function
                                       // also displays the vector field
                                       
     void ShowFlowLIC();	             //Execute LIC and display the updated texture
+    void DrawStreamModulated();
+    void OverlayGrid();
 private:
     bool rk4_forward(Vector2f &X);    //Return the next point on the streamline given the current point after arclength l. Return 'false' if hit boundary
     bool rk4_back(Vector2f &X);       //Return the next point on the streamline given the current point after arclength l
@@ -41,6 +43,7 @@ private:
     void get_critical_points();         //Looks for points where the vector field goes to 0 and pushes them onto "CriticalPoints".
                                         //Sets "critical_pt_avail" flag to 1
     bool sign_test(vector <Vector2f>);
+    void draw_stream_rk4(Vector2f X_Seed, bool direction);
 
 //Attribute
 private:
@@ -53,7 +56,6 @@ private:
     bool critical_pt_avail;
 
     //LIC Related Stuff
-    string texture_filename;     //String that contains the path to the Texture file, if using an input texture
     ScalarField2 texture_field;  //Scalar Field that contains the texture.
 
     int32 texture_size;         //Texture size is (2^texture_size)x(2^texture_size)
@@ -67,10 +69,11 @@ private:
     //Streamline Related Stuff
     bool show_seeds;             // 1: Show Seed Points    0: Don't show Seed Points
     bool persist_on;             // 1: Don't clear the screen before drawing  0: Clear the screen before drawing
-    bool vector_field;           // 1: Draw streamlines for vector field      0: Don't Draw streamlines the vector field
-    bool direction_field;         // 1: Draw streamlines for direction field  0: Don't Draw streamlines for direction field
     int num_seeds;               // Number of seeds for random streams
     float32 stream_alpha;        // Alpha of streamlines
+    Vector4f stream_color;
+    int32 stream_width;
+    bool draw_stream;           //Flag used to indicate to RK4 if a streamline is to be drawn
     
     //RK4 Parameters
     float32 step_size;            //The step size to use for RK4. The smaller of x or y size of a pixel would give the step size.
