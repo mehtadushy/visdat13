@@ -1,6 +1,6 @@
 // Repository for Assignments for the Visualisation and Data Analysis Course 2013
 // Instructors Tino Weinkauf and Janick Martinez
-// Author: Dushyant Mehta
+// Author: Dushyant Mehta. Certain files/segments authored by Amirhossein Kardoost.
 // This repository also contains files for the GeoX Framework
 // The assignments are contained in the "assignments" folder, the default
 //  GeoX experiments are in the "experiments" folder under trunk
