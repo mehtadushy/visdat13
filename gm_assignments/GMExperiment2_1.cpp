@@ -34,8 +34,7 @@ IMPLEMENT_GEOX_CLASS( GMExperiment2_1, 0)
    ADD_NOARGS_METHOD(GMExperiment2_1::drawParabola)         // Draw points of the parabola
    ADD_NOARGS_METHOD(GMExperiment2_1::drawTangentNormal)    // Draw tangent and normal at the selected point, if it is in range
    ADD_NOARGS_METHOD(GMExperiment2_1::interpPolynomial)     // Interpolate the drawn points with a polynomial
-   //ADD_NOARGS_METHOD(GMExperiment2_1::fitPolynomial)        // Fit a polynomial of degree  interp_deg to the parabola points
-   //ADD_NOARGS_METHOD(GMExperiment2_1::clearDisplay)  //Generate a random texture for LIC
+   ADD_NOARGS_METHOD(GMExperiment2_1::fitPolynomial)        // Fit a polynomial of degree  interp_deg to the parabola points
 	
 }
 QWidget* GMExperiment2_1::createViewer()  
@@ -154,11 +153,11 @@ void GMExperiment2_1::interpPolynomial()
 
 
       //Then render the polynomial
-      render_polynomial(poly_coeff, 1000, pair<float,float>(-4.0,4.0)); 
+      render_polynomial(poly_coeff, 1000, pair<float,float>(-4.0,4.0), makeVector4f(0.0,0.0,1.0,0.9)); 
 
 }
 
-void GMExperiment2_1::render_polynomial(DynamicVector<float> & poly_coeff, int n_points , pair<float,float> xrange)
+void GMExperiment2_1::render_polynomial(DynamicVector<float> & poly_coeff, int n_points , pair<float,float> xrange, Vector4f color)
 {
       //Polynomial is evaluated at each x and a line drawn between current point and the previous point
       Vector2f prevPt;
@@ -182,12 +181,50 @@ void GMExperiment2_1::render_polynomial(DynamicVector<float> & poly_coeff, int n
 
 	 if(i>0)
 	 {
-		viewer->addLine(prevPt,currPt,makeVector4f(0.0,0.0,1.0,0.9),2); 
+		viewer->addLine(prevPt,currPt,color,2); 
 	 }
 	 prevPt=currPt;
       }
       viewer->refresh();
 }
 
+void GMExperiment2_1::fitPolynomial()
+{
+      int deg_poly = interp_deg + 1;
 
+      if(deg_poly > parabola.size())
+      {
+	   output<<"Error! Too many coefficients to be determined!\n";
+      }
+      else
+      {
+	  poly_coeff.setDim(deg_poly);
+          // First compute the coefficients of the polynomial
+          DynamicMatrix<float>M(deg_poly,parabola.size());  //(columns, rows) and not (rows, columns)
+          //DynamicMatrix<float>A(parabola.size(),parabola.size());
+          DynamicVector<float>b(parabola.size());
+          
+          for(int i=0; i < deg_poly ; i++) //Each column
+          {
+             DynamicVector<float> &Mcol(M[i]);
+             for(int r=0; r < parabola.size(); r++)
+             {  
+                 Mcol[r]= pow(parabola[r][0],i);
+             }
+          }
+
+          for(int r=0; r < parabola.size(); r++)
+          {  
+              b[r]= parabola[r][1];
+          }
+     
+          //gaussSeidelSolve<float>(A, poly_coeff,b,1000);
+          poly_coeff = invertMatrix(M.transpose()*M)*M.transpose()*b;
+
+
+          //Then render the polynomial
+          render_polynomial(poly_coeff, 1000, pair<float,float>(-4.0,4.0), makeVector4f(0.0,1.0,1.0,0.9));
+      }
+
+}
 

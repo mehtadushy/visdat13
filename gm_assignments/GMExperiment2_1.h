@@ -30,7 +30,7 @@ private:
     // Internal functions
     void populate_parabola();
     void render_parabola();
-    void render_polynomial(DynamicVector<float> & poly_coeff, int n_points , pair<float,float> xrange);
+    void render_polynomial(DynamicVector<float> & poly_coeff, int n_points , pair<float,float> xrange, Vector4f color);
 
 private:
     virtual QWidget* createViewer();
