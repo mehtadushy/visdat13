@@ -32,7 +32,7 @@
 #include "ExerimentSimple.h"
 
 // ...
-// include your experiments here
+// Visualization and Data Analaysis 2013/14 Experiments
 #include "Experiment1_1.h"
 #include "Experiment1_2.h"
 #include "Experiment3_1.h"
@@ -41,6 +41,9 @@
 #include "Experiment5_3.h"
 #include "Experiment7_1.h"
 #include "Experiment9_1.h"
+
+// Geometric Modelling 2014 Experiments
+#include "GMExperiment2_1.h"
 
 // ...
 
@@ -76,6 +79,7 @@ void init()
     // register your experiments here
 
     ExerimentSimple::init(Experiment::getClass());
+    //Visdat 13/14 Experiments
     Experiment1_1::init(Experiment::getClass());
     Experiment1_2::init(Experiment::getClass());
     Experiment3_1::init(Experiment::getClass());
@@ -84,6 +88,10 @@ void init()
     Experiment5_3::init(Experiment::getClass());
     Experiment7_1::init(Experiment::getClass());
     Experiment9_1::init(Experiment::getClass());
+
+    //GeoMod 14 Experiments
+    GMExperiment2_1::init(Experiment::getClass());
+
     // ...
 }
 
@@ -115,6 +123,7 @@ void shutdown()
     // unregister your experiments here
 
     ExerimentSimple::shutdown();
+    //Visdat 13/14 Experiments
     Experiment1_1::shutdown();
     Experiment1_2::shutdown();
     Experiment3_1::shutdown();
@@ -123,5 +132,7 @@ void shutdown()
     Experiment5_3::shutdown();
     Experiment7_1::shutdown();
     Experiment9_1::shutdown();
+    //GeoMod 14 Experiments
+    GMExperiment2_1::shutdown();
     // ...
 }

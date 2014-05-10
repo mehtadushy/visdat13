@@ -157,6 +157,7 @@ SET(Experiment_SOURCES
     assignments/Experiment5_3.cpp
     assignments/Experiment7_1.cpp
     assignments/Experiment9_1.cpp
+    gm_assignments/GMExperiment2_1.cpp
 )
 
 SET(GeoX_SOURCES ${GeoX_SOURCES}
@@ -166,7 +167,7 @@ SET(GeoX_SOURCES ${GeoX_SOURCES}
 QT4_ADD_RESOURCES(GeoX_resources images/geoX.qrc)
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${OPENGL_INCLUDE_DIR}
-                    experiments assignments geoX math system/basics system/gui system/misc
+                    experiments assignments gm_assignments geoX math system/basics system/gui system/misc
                     system/properties system/streaming viewers/cameraControl viewers/widgets
                     windows)
 
