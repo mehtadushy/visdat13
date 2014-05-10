@@ -9,11 +9,7 @@
 #include "GeoXOutput.h"
 //---------------------------------------------------------------------------
 
-#include <limits>
-#include "Field2.hpp"
-
-// Feature extraction from 2D Vector Fields / Topology of 2D Vector Fields
-
+// Interpolation and curve fitting
 
 
 IMPLEMENT_GEOX_CLASS( GMExperiment2_1, 0)
@@ -28,8 +24,6 @@ IMPLEMENT_GEOX_CLASS( GMExperiment2_1, 0)
    ADD_INT32_PROP(interp_deg,0)
    ADD_SEPARATOR("Display related")
    ADD_BOOLEAN_PROP(persist_on,0)
-
-
 
    ADD_NOARGS_METHOD(GMExperiment2_1::drawParabola)         // Draw points of the parabola
    ADD_NOARGS_METHOD(GMExperiment2_1::drawTangentNormal)    // Draw tangent and normal at the selected point, if it is in range
@@ -150,8 +144,7 @@ void GMExperiment2_1::interpPolynomial()
      
       //gaussSeidelSolve<float>(A, poly_coeff,b,1000);
       poly_coeff = invertMatrix(A)*b;
-
-
+      
       //Then render the polynomial
       render_polynomial(poly_coeff, 1000, pair<float,float>(-4.0,4.0), makeVector4f(0.0,0.0,1.0,0.9)); 
 
@@ -201,7 +194,6 @@ void GMExperiment2_1::fitPolynomial()
 	  poly_coeff.setDim(deg_poly);
           // First compute the coefficients of the polynomial
           DynamicMatrix<float>M(deg_poly,parabola.size());  //(columns, rows) and not (rows, columns)
-          //DynamicMatrix<float>A(parabola.size(),parabola.size());
           DynamicVector<float>b(parabola.size());
           
           for(int i=0; i < deg_poly ; i++) //Each column
@@ -218,9 +210,7 @@ void GMExperiment2_1::fitPolynomial()
               b[r]= parabola[r][1];
           }
      
-          //gaussSeidelSolve<float>(A, poly_coeff,b,1000);
           poly_coeff = invertMatrix(M.transpose()*M)*M.transpose()*b;
-
 
           //Then render the polynomial
           render_polynomial(poly_coeff, 1000, pair<float,float>(-4.0,4.0), makeVector4f(0.0,1.0,1.0,0.9));
