@@ -158,7 +158,7 @@ void GMExperiment8_1::drawEllipse()
     {
         for(int k=0; k<ctrlpts_per_seg-1; k++)
         {
-            farin_points.push_back( (affine_control[i+k] * weights[i+k+1] +  affine_control[i+k+1] * weights[i+k])/(weights[i+k+1]+weights[i+k]));
+            farin_points.push_back( (affine_control[i+k] * weights[i+k] +  affine_control[i+k+1] * weights[i+k+1])/(weights[i+k+1]+weights[i+k]));
         }
     };
 
