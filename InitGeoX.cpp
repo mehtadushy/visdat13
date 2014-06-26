@@ -44,6 +44,9 @@
 
 // Geometric Modelling 2014 Experiments
 #include "GMExperiment2_1.h"
+#include "GMExperiment4_1.h"
+#include "GMExperiment6_1.h"
+#include "GMExperiment8_1.h"
 
 // ...
 
@@ -91,6 +94,9 @@ void init()
 
     //GeoMod 14 Experiments
     GMExperiment2_1::init(Experiment::getClass());
+    GMExperiment4_1::init(Experiment::getClass());
+    GMExperiment6_1::init(Experiment::getClass());
+    GMExperiment8_1::init(Experiment::getClass());
 
     // ...
 }
@@ -134,5 +140,8 @@ void shutdown()
     Experiment9_1::shutdown();
     //GeoMod 14 Experiments
     GMExperiment2_1::shutdown();
+    GMExperiment4_1::shutdown();
+    GMExperiment6_1::shutdown();
+    GMExperiment8_1::shutdown();
     // ...
 }

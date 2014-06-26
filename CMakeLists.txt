@@ -3,7 +3,9 @@ cmake_minimum_required(VERSION 2.8)
 PROJECT(GeoX)
 
 FIND_PACKAGE(Qt4 REQUIRED QtCore QtGui QtOpenGL)
+FIND_PACKAGE( OpenCV REQUIRED )
 INCLUDE(${QT_USE_FILE})
+SET(CMAKE_CXX_FLAGS "-std=c++0x")
 
 FIND_PACKAGE(OpenGL REQUIRED)
 
@@ -158,6 +160,9 @@ SET(Experiment_SOURCES
     assignments/Experiment7_1.cpp
     assignments/Experiment9_1.cpp
     gm_assignments/GMExperiment2_1.cpp
+    gm_assignments/GMExperiment4_1.cpp
+    gm_assignments/GMExperiment6_1.cpp
+    gm_assignments/GMExperiment8_1.cpp
 )
 
 SET(GeoX_SOURCES ${GeoX_SOURCES}
@@ -166,12 +171,12 @@ SET(GeoX_SOURCES ${GeoX_SOURCES}
 
 QT4_ADD_RESOURCES(GeoX_resources images/geoX.qrc)
 
-INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${OPENGL_INCLUDE_DIR}
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${OPENGL_INCLUDE_DIR} ${OpenCV_INCLUDE_DIRS}
                     experiments assignments gm_assignments geoX math system/basics system/gui system/misc
                     system/properties system/streaming viewers/cameraControl viewers/widgets
                     windows)
-
-SET(ALLLIBS ${QT_QTMAIN_LIBRARY} ${QT_LIBRARIES} ${OPENGL_LIBRARIES})
+INCLUDE_DIRECTORIES ( "/home/dushy/eigen-3.2.1/" )
+SET(ALLLIBS ${QT_QTMAIN_LIBRARY} ${QT_LIBRARIES} ${OPENGL_LIBRARIES} ${OpenCV_LIBS})
 
 IF(WIN32) # Check if we are on Windows
   SET(GeoX_SOURCES ${GeoX_SOURCES} windows/stdafx.cpp windows/winmain.cpp unix/main.cpp) #We need the main.cpp, because CMake is stupid and always creates us with /SUBSYSTEM:CONSOLE
