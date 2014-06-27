@@ -47,6 +47,7 @@
 #include "GMExperiment4_1.h"
 #include "GMExperiment6_1.h"
 #include "GMExperiment8_1.h"
+#include "GMExperiment8_3.h"
 
 // ...
 
@@ -97,6 +98,7 @@ void init()
     GMExperiment4_1::init(Experiment::getClass());
     GMExperiment6_1::init(Experiment::getClass());
     GMExperiment8_1::init(Experiment::getClass());
+    GMExperiment8_3::init(Experiment::getClass());
 
     // ...
 }
@@ -143,5 +145,6 @@ void shutdown()
     GMExperiment4_1::shutdown();
     GMExperiment6_1::shutdown();
     GMExperiment8_1::shutdown();
+    GMExperiment8_3::shutdown();
     // ...
 }

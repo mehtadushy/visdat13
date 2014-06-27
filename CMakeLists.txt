@@ -163,6 +163,7 @@ SET(Experiment_SOURCES
     gm_assignments/GMExperiment4_1.cpp
     gm_assignments/GMExperiment6_1.cpp
     gm_assignments/GMExperiment8_1.cpp
+    gm_assignments/GMExperiment8_3.cpp
 )
 
 SET(GeoX_SOURCES ${GeoX_SOURCES}
